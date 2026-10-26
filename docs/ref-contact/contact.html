@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nopal Risfana — Contact & Footer Section</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Geist and Geist Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+            mono: ['"Geist Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              red: '#e63946',
+              dark: '#0b0d12',
+              surface: '#0f1218',
+              muted: '#9ca3af',
+              text: '#f3f4f6',
+              line: 'rgba(255, 255, 255, 0.12)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Strict Hairline & Reset Rules */
+    * {
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    .hairline-border {
+      border-color: rgba(255, 255, 255, 0.12);
+      border-width: 0.5px;
+    }
+    .hairline-b {
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+    }
+    .hairline-t {
+      border-top: 0.5px solid rgba(255, 255, 255, 0.12);
+    }
+    .custom-input {
+      background: transparent;
+      border: none;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+      color: #f3f4f6;
+      font-family: 'Geist', sans-serif;
+      outline: none;
+      transition: border-color 0.2s ease;
+      width: 100%;
+    }
+    .custom-input:focus {
+      border-bottom: 0.5px solid #e63946;
+    }
+    /* Ghost outline watermark */
+    .watermark-text {
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+      color: transparent;
+      line-height: 0.8;
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="bg-[#0b0d12] text-[#f3f4f6] font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-[#e63946] selection:text-white relative overflow-x-hidden">
+
+  <!-- Main Section Wrapper -->
+  <main class="w-full flex-1 flex flex-col justify-between">
+    <div class="w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 pt-[120px] pb-16 relative z-10 flex-1 flex flex-col">
+      
+      <!-- Top Eyebrow Hairline Row -->
+      <header class="w-full pb-6 mb-16 hairline-b flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span class="w-2 h-2 bg-[#e63946] inline-block flex-shrink-0"></span>
+          <span class="font-mono text-xs uppercase tracking-[0.1em] text-[#f3f4f6] font-medium">04 / CONTACT</span>
+        </div>
+        <div class="font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">
+          REPLY WITHIN 24H
+        </div>
+      </header>
+
+      <!-- Giant Editorial Headline (~9 columns) -->
+      <section class="mb-20">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] font-bold tracking-[-0.04em] text-[#f3f4f6] leading-[1.03] max-w-[1020px]">
+          LET'S BUILD SOMETHING <span class="text-[#e63946]">SHARP.</span>
+        </h1>
+      </section>
+
+      <!-- Asymmetric 12-Column Grid (5 cols vs 7 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start flex-1 mb-24">
+        
+        <!-- Left Column: 5 Cols (Bio, Email, Metadata Table) -->
+        <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-12">
+          <div class="space-y-8">
+            <p class="text-[#9ca3af] text-base sm:text-lg leading-relaxed max-w-md font-normal">
+              Have an ambitious web application, telemetry dashboard, or product design in mind? I partner with founders and product teams to engineer fast, resilient software.
+            </p>
+
+            <!-- Big Mono Email Link -->
+            <div class="pt-2">
+              <a href="mailto:hello@nopal.dev" class="group inline-flex items-center gap-3 font-mono text-xl sm:text-2xl font-medium tracking-tight text-[#f3f4f6] hover:text-[#e63946] transition-colors duration-150">
+                <span class="border-b border-[#f3f4f6] group-hover:border-[#e63946] transition-colors pb-0.5">HELLO@NOPAL.DEV</span>
+                <span class="w-6 h-6 bg-[#e63946] text-white flex items-center justify-center text-xs font-mono group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150">↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hairline List of Contact Rows -->
+          <div class="w-full hairline-t mt-auto">
+            <!-- Row 1: Location -->
+            <div class="hairline-b py-4 flex items-center justify-between">
+              <span class="font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">LOCATION</span>
+              <span class="font-sans text-sm text-[#f3f4f6] font-medium">Jakarta, Indonesia (GMT+7)</span>
+            </div>
+            <!-- Row 2: Availability -->
+            <div class="hairline-b py-4 flex items-center justify-between">
+              <span class="font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">AVAILABILITY</span>
+              <span class="font-sans text-sm text-[#f3f4f6] font-medium flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-[#e63946] inline-block"></span>
+                Open for freelance
+              </span>
+            </div>
+            <!-- Row 3: Response -->
+            <div class="hairline-b py-4 flex items-center justify-between">
+              <span class="font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">RESPONSE</span>
+              <span class="font-sans text-sm text-[#f3f4f6] font-medium">Within 24 hours</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: 7 Cols (Hairline Contact Form, No Card Box) -->
+        <div class="lg:col-span-7 lg:pl-6">
+          <form class="space-y-8" onsubmit="event.preventDefault();">
+            
+            <!-- Field 1: Name (with active focus cue in signal red) -->
+            <div class="space-y-2">
+              <label for="name" class="block font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">
+                01 // YOUR NAME
+              </label>
+              <input 
+                type="text" 
+                id="name" 
+                value="Julian Vance" 
+                placeholder="Jane Doe" 
+                class="custom-input py-3 text-base text-[#f3f4f6] placeholder-zinc-600 focus:border-[#e63946]"
+                style="border-bottom-color: #e63946;"
+              />
+            </div>
+
+            <!-- Field 2: Email -->
+            <div class="space-y-2">
+              <label for="email" class="block font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">
+                02 // EMAIL ADDRESS
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                placeholder="jane@company.com" 
+                class="custom-input py-3 text-base text-[#f3f4f6] placeholder-zinc-600 focus:border-[#e63946]"
+              />
+            </div>
+
+            <!-- Field 3: Project Type (Select with Chevron) -->
+            <div class="space-y-2">
+              <label for="project-type" class="block font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">
+                03 // PROJECT SCOPE
+              </label>
+              <div class="relative">
+                <select 
+                  id="project-type" 
+                  class="custom-input py-3 text-base text-[#f3f4f6] bg-transparent appearance-none cursor-pointer pr-8 focus:border-[#e63946]"
+                >
+                  <option class="bg-[#0b0d12] text-[#f3f4f6]" value="fullstack">Full-Stack Web Application (Next.js / Node)</option>
+                  <option class="bg-[#0b0d12] text-[#f3f4f6]" value="design-system">Frontend Architecture & Design Systems</option>
+                  <option class="bg-[#0b0d12] text-[#f3f4f6]" value="telemetry">Real-time Dashboard & Telemetry</option>
+                  <option class="bg-[#0b0d12] text-[#f3f4f6]" value="consulting">Codebase Audit & Performance Tuning</option>
+                </select>
+                <!-- Minimal Chevron -->
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1 text-[#9ca3af]">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Field 4: Message (Textarea) -->
+            <div class="space-y-2">
+              <label for="message" class="block font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">
+                04 // PROJECT DETAILS
+              </label>
+              <textarea 
+                id="message" 
+                rows="4" 
+                placeholder="Tell me about your timeline, deliverables, and architecture..." 
+                class="custom-input py-3 text-base text-[#f3f4f6] placeholder-zinc-600 resize-none focus:border-[#e63946]"
+              ></textarea>
+            </div>
+
+            <!-- Submit Button (Solid Red Square Button) -->
+            <div class="pt-4">
+              <button 
+                type="submit" 
+                class="inline-flex items-center justify-center gap-3 bg-[#e63946] hover:bg-[#c92a37] text-white font-mono text-xs font-semibold uppercase tracking-[0.1em] px-8 py-4 transition-colors duration-150 cursor-pointer"
+              >
+                <span>SEND MESSAGE</span>
+                <span class="text-sm">→</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="w-full relative hairline-t overflow-hidden">
+      
+      <!-- Top Content Bar of Footer -->
+      <div class="w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+        
+        <!-- Left: Wordmark with red square -->
+        <div class="flex items-center space-x-2.5">
+          <span class="w-2.5 h-2.5 bg-[#e63946] inline-block"></span>
+          <span class="font-mono text-sm tracking-widest text-[#f3f4f6] font-semibold">NOPAL.DEV</span>
+        </div>
+
+        <!-- Center: Mono Social Links -->
+        <nav class="flex flex-wrap items-center gap-6 sm:gap-8 font-mono text-xs uppercase tracking-[0.08em] text-[#9ca3af]">
+          <a href="#" class="hover:text-[#f3f4f6] transition-colors">GITHUB ↗</a>
+          <a href="#" class="hover:text-[#f3f4f6] transition-colors">LINKEDIN ↗</a>
+          <a href="#" class="hover:text-[#f3f4f6] transition-colors">INSTAGRAM ↗</a>
+          <a href="#" class="hover:text-[#f3f4f6] transition-colors">X ↗</a>
+        </nav>
+
+        <!-- Right: Copyright and Back to Top -->
+        <div class="flex items-center space-x-6 font-mono text-xs tracking-wider text-[#9ca3af]">
+          <span>© 2026 NOPAL RISFANA</span>
+          <span class="text-white/20">/</span>
+          <a href="#top" class="hover:text-[#f3f4f6] transition-colors">BACK TO TOP ↑</a>
+        </div>
+
+      </div>
+
+      <!-- Watermark Outlined Wordmark Cropped at Bottom -->
+      <div class="w-full flex justify-center items-end select-none pointer-events-none -mb-8 sm:-mb-12 md:-mb-16 overflow-hidden">
+        <span class="watermark-text font-sans font-extrabold text-[18vw] tracking-tighter uppercase leading-none opacity-60">
+          NOPAL
+        </span>
+      </div>
+
+    </footer>
+  </main>
+
+</body>
+</html>

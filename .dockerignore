@@ -1,0 +1,9 @@
+.git
+.next
+.env*
+!.env.example
+node_modules
+app/generated/prisma
+coverage
+*.tsbuildinfo
+dev.db

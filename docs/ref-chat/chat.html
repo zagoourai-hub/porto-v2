@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOPAL.DEV — Ask AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#0b0d12',
+            surface: '#11141b',
+            'surface-subtle': '#161a23',
+            'hairline': 'rgba(255, 255, 255, 0.12)',
+            'hairline-subtle': 'rgba(255, 255, 255, 0.06)',
+            'brand-red': '#e63946',
+            'brand-red-hover': '#c92a37',
+            'txt-white': '#f3f4f6',
+            'txt-muted': '#9ca3af',
+            'txt-dim': '#6b7280',
+          },
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+            mono: ['"Geist Mono"', 'monospace'],
+          },
+          keyframes: {
+            blink: {
+              '0%, 49%': { opacity: '1' },
+              '50%, 100%': { opacity: '0' },
+            }
+          },
+          animation: {
+            'cursor-blink': 'blink 1s infinite',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      border-radius: 0px !important;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0b0d12;
+      color: #f3f4f6;
+      font-family: 'Geist', sans-serif;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hairline-border {
+      border-width: 0.5px;
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+    .hairline-b {
+      border-bottom-width: 0.5px;
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+    .hairline-t {
+      border-top-width: 0.5px;
+      border-top-color: rgba(255, 255, 255, 0.12);
+    }
+    .hairline-r {
+      border-right-width: 0.5px;
+      border-right-color: rgba(255, 255, 255, 0.12);
+    }
+    .hairline-l {
+      border-left-width: 0.5px;
+      border-left-color: rgba(255, 255, 255, 0.12);
+    }
+    /* Custom clean scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b0d12;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
+</head>
+<body class="w-[1440px] h-[900px] flex flex-col bg-canvas text-txt-white selection:bg-brand-red selection:text-white select-none">
+
+  <!-- TOP BAR -->
+  <header class="h-14 w-full bg-canvas hairline-b flex items-center justify-between px-6 shrink-0 z-20">
+    <!-- Left: Brand + Breadcrumb -->
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-2.5">
+        <span class="w-2.5 h-2.5 bg-brand-red inline-block"></span>
+        <span class="font-mono text-xs font-semibold tracking-wider text-txt-white">NOPAL.DEV</span>
+      </div>
+      <span class="font-mono text-xs text-txt-dim">/</span>
+      <span class="font-mono text-xs tracking-wider text-txt-muted bg-surface px-2 py-0.5 hairline-border">ASK-AI</span>
+      <span class="font-mono text-[10px] tracking-widest text-txt-dim uppercase ml-2 hidden sm:inline">v2.4_PROD</span>
+    </div>
+
+    <!-- Center: Context info indicator -->
+    <div class="hidden md:flex items-center space-x-3 text-xs font-mono text-txt-dim">
+      <span class="text-hairline">[</span>
+      <span>MODEL: KNOWLEDGE_BASE_RAG</span>
+      <span class="text-hairline">·</span>
+      <span>LATENCY: 18ms</span>
+      <span class="text-hairline">]</span>
+    </div>
+
+    <!-- Right: Navigation + Status -->
+    <div class="flex items-center space-x-6">
+      <nav class="flex items-center space-x-5 text-xs font-mono">
+        <a href="#home" class="text-txt-muted hover:text-txt-white transition-colors">HOME</a>
+        <a href="#work" class="text-txt-muted hover:text-txt-white transition-colors">WORK</a>
+        <a href="#contact" class="text-txt-muted hover:text-txt-white transition-colors">CONTACT</a>
+      </nav>
+      <div class="h-3 w-[0.5px] bg-hairline"></div>
+      <!-- Status Chip with red square marker -->
+      <div class="flex items-center space-x-2 bg-surface px-2.5 py-1 hairline-border font-mono text-[11px] tracking-wider text-txt-white">
+        <span class="w-1.5 h-1.5 bg-brand-red inline-block"></span>
+        <span>ONLINE</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE: 12-COL GRID (3 cols sidebar + 9 cols chat) -->
+  <div class="flex-1 flex overflow-hidden">
+
+    <!-- LEFT SIDEBAR: 3 COLS (~360px) -->
+    <aside class="w-[360px] h-full hairline-r bg-canvas flex flex-col justify-between shrink-0 select-text">
+      <div class="flex-1 flex flex-col overflow-y-auto">
+        <!-- New Chat Button -->
+        <div class="p-5 hairline-b">
+          <button class="w-full py-2.5 px-4 bg-surface hover:bg-surface-subtle text-txt-white hairline-border flex items-center justify-between font-mono text-xs tracking-wider transition-all group">
+            <span class="flex items-center space-x-2">
+              <span class="text-brand-red font-semibold">+</span>
+              <span>NEW CHAT</span>
+            </span>
+            <span class="text-[10px] text-txt-dim font-mono border border-hairline px-1.5 py-0.2 group-hover:border-txt-muted">⌘K</span>
+          </button>
+        </div>
+
+        <!-- Section: SUGGESTED PROMPTS -->
+        <div class="p-5 hairline-b">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-txt-dim uppercase">// SUGGESTED</span>
+            <span class="font-mono text-[10px] text-txt-dim">04 PROMPTS</span>
+          </div>
+
+          <div class="flex flex-col space-y-2">
+            <!-- Prompt 1 -->
+            <button class="w-full text-left p-2.5 bg-surface hover:bg-surface-subtle hairline-border flex items-center justify-between group transition-colors">
+              <span class="font-sans text-xs text-txt-muted group-hover:text-txt-white transition-colors">What does Nopal build?</span>
+              <span class="font-mono text-xs text-txt-dim group-hover:text-brand-red transition-colors pl-2">→</span>
+            </button>
+            <!-- Prompt 2 -->
+            <button class="w-full text-left p-2.5 bg-surface hover:bg-surface-subtle hairline-border flex items-center justify-between group transition-colors">
+              <span class="font-sans text-xs text-txt-muted group-hover:text-txt-white transition-colors">Show me recent projects</span>
+              <span class="font-mono text-xs text-txt-dim group-hover:text-brand-red transition-colors pl-2">→</span>
+            </button>
+            <!-- Prompt 3 -->
+            <button class="w-full text-left p-2.5 bg-surface hover:bg-surface-subtle hairline-border flex items-center justify-between group transition-colors">
+              <span class="font-sans text-xs text-txt-muted group-hover:text-txt-white transition-colors">Which stack do you use?</span>
+              <span class="font-mono text-xs text-txt-dim group-hover:text-brand-red transition-colors pl-2">→</span>
+            </button>
+            <!-- Prompt 4 -->
+            <button class="w-full text-left p-2.5 bg-surface hover:bg-surface-subtle hairline-border flex items-center justify-between group transition-colors">
+              <span class="font-sans text-xs text-txt-muted group-hover:text-txt-white transition-colors">Are you available for hire?</span>
+              <span class="font-mono text-xs text-txt-dim group-hover:text-brand-red transition-colors pl-2">→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Section: HISTORY -->
+        <div class="p-5 flex-1">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[10px] tracking-widest text-txt-dim uppercase">// HISTORY</span>
+            <span class="font-mono text-[10px] text-txt-dim">RECENT</span>
+          </div>
+
+          <div class="flex flex-col space-y-1">
+            <!-- History item 1 (active) -->
+            <div class="p-2.5 bg-surface hairline-border cursor-pointer group">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[9px] text-brand-red font-medium tracking-wider">TODAY · 14:02</span>
+                <span class="w-1.5 h-1.5 bg-brand-red"></span>
+              </div>
+              <p class="font-sans text-xs text-txt-white truncate">Experience, stack & projects breakdown</p>
+            </div>
+
+            <!-- History item 2 -->
+            <div class="p-2.5 hover:bg-surface/50 cursor-pointer group transition-colors">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[9px] text-txt-dim tracking-wider">TODAY · 11:24</span>
+              </div>
+              <p class="font-sans text-xs text-txt-muted group-hover:text-txt-white truncate">Freelance rates & availability scope</p>
+            </div>
+
+            <!-- History item 3 -->
+            <div class="p-2.5 hover:bg-surface/50 cursor-pointer group transition-colors">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-mono text-[9px] text-txt-dim tracking-wider">YESTERDAY · 18:40</span>
+              </div>
+              <p class="font-sans text-xs text-txt-muted group-hover:text-txt-white truncate">Next.js 15 SSR architecture inquiry</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer Disclaimer -->
+      <div class="p-4 hairline-t bg-canvas shrink-0">
+        <div class="flex items-start space-x-2">
+          <span class="text-brand-red font-mono text-[11px] leading-tight select-none">!</span>
+          <p class="font-mono text-[10px] text-txt-dim leading-relaxed tracking-tight uppercase">
+            AI MAY BE WRONG. CONTACT NOPAL FOR FACTS.
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CHAT AREA: 9 COLS (fills remaining 1080px) -->
+    <main class="flex-1 flex flex-col h-full bg-canvas relative overflow-hidden">
+
+      <!-- Conversation Scroll Container -->
+      <div class="flex-1 overflow-y-auto px-10 py-8 select-text">
+        <div class="max-w-[760px] mx-auto flex flex-col space-y-7 pb-24">
+
+          <!-- Date / Time Divider -->
+          <div class="flex items-center justify-center my-2 select-none">
+            <div class="h-[0.5px] flex-1 bg-hairline-subtle"></div>
+            <span class="font-mono text-[10px] tracking-widest text-txt-dim px-4 uppercase">TODAY — 14:02</span>
+            <div class="h-[0.5px] flex-1 bg-hairline-subtle"></div>
+          </div>
+
+          <!-- TURN 1: USER -->
+          <div class="flex flex-col items-end w-full">
+            <span class="font-mono text-[10px] tracking-widest text-txt-dim mb-1.5 uppercase select-none">YOU</span>
+            <div class="bg-surface hairline-border p-4 max-w-[540px]">
+              <p class="font-sans text-[15px] leading-relaxed text-txt-white">
+                Hi, I'm reviewing Nopal's portfolio. Can you give me a summary of what he builds and his core technical focus?
+              </p>
+            </div>
+          </div>
+
+          <!-- TURN 1: AI ASSISTANT -->
+          <div class="flex flex-col items-start w-full">
+            <div class="flex items-center space-x-2 mb-2 select-none">
+              <span class="w-2.5 h-2.5 bg-brand-red inline-block"></span>
+              <span class="font-mono text-[11px] tracking-wider text-txt-white font-medium uppercase">NOPAL AI</span>
+              <span class="font-mono text-[10px] text-txt-dim">· BOT</span>
+            </div>
+
+            <div class="space-y-3.5 max-w-[720px] text-txt-white pl-4 border-l border-hairline-subtle">
+              <p class="font-sans text-[15px] leading-relaxed text-txt-white">
+                Nopal Risfana is a full-stack web developer and UI engineer based in Jakarta, Indonesia. He engineers fast, resilient web applications, data-dense telemetry dashboards, and modular headless commerce platforms with zero-latency UX.
+              </p>
+
+              <div class="space-y-2 pt-1 font-sans text-[14.5px] leading-relaxed text-txt-white">
+                <div class="flex items-start space-x-3">
+                  <span class="font-mono text-xs text-brand-red mt-0.5 select-none">01</span>
+                  <span><strong class="font-medium text-white">Full-Stack Web Applications:</strong> Next.js (App Router), TypeScript, Tailwind CSS, Node.js, and Postgres databases.</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="font-mono text-xs text-brand-red mt-0.5 select-none">02</span>
+                  <span><strong class="font-medium text-white">Telemetry & Dashboards:</strong> High-density UI layouts handling real-time socket streams, sub-50ms render cycles, and custom visual controls.</span>
+                </div>
+                <div class="flex items-start space-x-3">
+                  <span class="font-mono text-xs text-brand-red mt-0.5 select-none">03</span>
+                  <span><strong class="font-medium text-white">Design Systems & Craft:</strong> Brutalist-lite, editorial rigor, square geometry, micro-interactions, and 100/100 Lighthouse performance.</span>
+                </div>
+              </div>
+
+              <!-- Action Bar for AI Turn -->
+              <div class="flex items-center space-x-2 pt-2 select-none">
+                <button class="px-2 py-1 bg-surface hover:bg-surface-subtle hairline-border font-mono text-[10px] text-txt-dim hover:text-txt-white tracking-wider uppercase transition-colors flex items-center space-x-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M8 7v10m0-10h8m-8 10h8m0-10v10m-4-14h8v14h-8V3z"/></svg>
+                  <span>COPY</span>
+                </button>
+                <button class="px-2 py-1 bg-surface hover:bg-surface-subtle hairline-border font-mono text-[10px] text-txt-dim hover:text-txt-white tracking-wider uppercase transition-colors flex items-center space-x-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M4 4v5h5M20 20v-5h-5M4 9a8 8 0 0114.9-3M20 15a8 8 0 01-14.9 3"/></svg>
+                  <span>REGENERATE</span>
+                </button>
+                <button class="p-1 bg-surface hover:bg-surface-subtle hairline-border text-txt-dim hover:text-txt-white transition-colors" title="Helpful">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+                </button>
+                <button class="p-1 bg-surface hover:bg-surface-subtle hairline-border text-txt-dim hover:text-txt-white transition-colors" title="Not helpful">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3zm7-13h3a2 2 0 012 2v7a2 2 0 01-2 2h-3"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TURN 2: USER -->
+          <div class="flex flex-col items-end w-full">
+            <span class="font-mono text-[10px] tracking-widest text-txt-dim mb-1.5 uppercase select-none">YOU</span>
+            <div class="bg-surface hairline-border p-4 max-w-[540px]">
+              <p class="font-sans text-[15px] leading-relaxed text-txt-white">
+                Show me his flagship telemetry or web app work, plus his tech stack for it.
+              </p>
+            </div>
+          </div>
+
+          <!-- TURN 2: AI ASSISTANT (With Project Reference Row) -->
+          <div class="flex flex-col items-start w-full">
+            <div class="flex items-center space-x-2 mb-2 select-none">
+              <span class="w-2.5 h-2.5 bg-brand-red inline-block"></span>
+              <span class="font-mono text-[11px] tracking-wider text-txt-white font-medium uppercase">NOPAL AI</span>
+              <span class="font-mono text-[10px] text-txt-dim">· BOT</span>
+            </div>
+
+            <div class="space-y-3.5 max-w-[720px] text-txt-white pl-4 border-l border-hairline-subtle">
+              <p class="font-sans text-[15px] leading-relaxed text-txt-white">
+                His standout 2026 flagship project is <strong class="text-white font-semibold">Nexus Analytics</strong> — a real-time infrastructure telemetry platform handling sub-50ms queries, automated cluster scaling alerts, and interactive event time-series visualizations.
+              </p>
+
+              <!-- Inline project reference row: square, hairline, brutalist -->
+              <div class="bg-surface hairline-border p-3.5 flex items-center justify-between hover:bg-surface-subtle transition-colors group cursor-pointer">
+                <div class="flex items-center space-x-3">
+                  <div class="w-2 h-2 bg-brand-red"></div>
+                  <div>
+                    <div class="font-mono text-xs font-semibold tracking-wider text-white">NEXUS ANALYTICS</div>
+                    <div class="font-mono text-[10px] text-txt-dim tracking-tight">WEB APP · 2026 · LATENCY: 14MS · 99.998% UPTIME</div>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="font-mono text-[10px] text-txt-muted group-hover:text-white transition-colors">VIEW</span>
+                  <span class="font-mono text-xs text-brand-red font-bold">↗</span>
+                </div>
+              </div>
+
+              <div class="pt-1">
+                <span class="font-mono text-[10px] tracking-widest text-txt-dim uppercase block mb-1.5">// STACK COMPONENTS</span>
+                <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                  <span class="px-2 py-0.5 bg-surface hairline-border text-txt-muted">NEXT.JS 15</span>
+                  <span class="px-2 py-0.5 bg-surface hairline-border text-txt-muted">TYPESCRIPT</span>
+                  <span class="px-2 py-0.5 bg-surface hairline-border text-txt-muted">POSTGRESQL</span>
+                  <span class="px-2 py-0.5 bg-surface hairline-border text-txt-muted">TAILWIND CSS</span>
+                  <span class="px-2 py-0.5 bg-surface hairline-border text-txt-muted">WEBSOCKETS</span>
+                </div>
+              </div>
+
+              <!-- Action Bar for AI Turn 2 -->
+              <div class="flex items-center space-x-2 pt-2 select-none">
+                <button class="px-2 py-1 bg-surface hover:bg-surface-subtle hairline-border font-mono text-[10px] text-txt-dim hover:text-txt-white tracking-wider uppercase transition-colors flex items-center space-x-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M8 7v10m0-10h8m-8 10h8m0-10v10m-4-14h8v14h-8V3z"/></svg>
+                  <span>COPY</span>
+                </button>
+                <button class="px-2 py-1 bg-surface hover:bg-surface-subtle hairline-border font-mono text-[10px] text-txt-dim hover:text-txt-white tracking-wider uppercase transition-colors flex items-center space-x-1.5">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M4 4v5h5M20 20v-5h-5M4 9a8 8 0 0114.9-3M20 15a8 8 0 01-14.9 3"/></svg>
+                  <span>REGENERATE</span>
+                </button>
+                <button class="p-1 bg-surface hover:bg-surface-subtle hairline-border text-txt-dim hover:text-txt-white transition-colors" title="Helpful">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>
+                </button>
+                <button class="p-1 bg-surface hover:bg-surface-subtle hairline-border text-txt-dim hover:text-txt-white transition-colors" title="Not helpful">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="square" d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3zm7-13h3a2 2 0 012 2v7a2 2 0 01-2 2h-3"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TURN 3: USER -->
+          <div class="flex flex-col items-end w-full">
+            <span class="font-mono text-[10px] tracking-widest text-txt-dim mb-1.5 uppercase select-none">YOU</span>
+            <div class="bg-surface hairline-border p-4 max-w-[540px]">
+              <p class="font-sans text-[15px] leading-relaxed text-txt-white">
+                Is Nopal currently open for freelance contracts, and what's the expected turnaround?
+              </p>
+            </div>
+          </div>
+
+          <!-- TURN 3: AI ASSISTANT (Streaming State) -->
+          <div class="flex flex-col items-start w-full">
+            <div class="flex items-center space-x-2 mb-2 select-none">
+              <span class="w-2.5 h-2.5 bg-brand-red inline-block"></span>
+              <span class="font-mono text-[11px] tracking-wider text-txt-white font-medium uppercase">NOPAL AI</span>
+              <span class="font-mono text-[9px] text-brand-red border border-brand-red/40 px-1.5 py-0.2 animate-pulse uppercase">GENERATING…</span>
+            </div>
+
+            <div class="space-y-3 max-w-[720px] text-txt-white pl-4 border-l border-brand-red/30">
+              <p class="font-sans text-[15px] leading-relaxed text-txt-white">
+                Yes, Nopal is currently <strong class="text-white font-medium">available for freelance and select contract engineering</strong> starting Q2 2026. He typically replies to initial briefs within 24 hours via <span class="font-mono text-xs text-brand-red underline decoration-brand-red/50">HELLO@NOPAL.DEV</span>. For new products or telemetry builds, project sprint delivery ranges between 2 to 4 weeks depending on the backend architectural scope<span class="inline-block text-brand-red ml-1 font-mono font-bold animate-cursor-blink">█</span>
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PINNED COMPOSER AT BOTTOM -->
+      <div class="absolute bottom-0 left-0 right-0 bg-canvas hairline-t px-10 py-4 z-10 backdrop-blur-md bg-canvas/95">
+        <div class="max-w-[760px] mx-auto">
+          <!-- Input Box Bar -->
+          <div class="flex items-center bg-surface hairline-border focus-within:border-brand-red transition-colors">
+            <!-- Left mono prefix -->
+            <div class="pl-4 pr-2 font-mono text-xs text-brand-red font-semibold select-none">
+              /
+            </div>
+            <!-- Input text field -->
+            <input 
+              type="text" 
+              placeholder="ASK ANYTHING ABOUT NOPAL…" 
+              value=""
+              class="flex-1 bg-transparent py-3.5 text-xs font-mono text-txt-white placeholder:text-txt-dim focus:outline-none tracking-wider uppercase"
+              autofocus
+            />
+            <!-- Right Solid Red Send Button -->
+            <button class="w-11 h-11 bg-brand-red hover:bg-brand-red-hover text-white flex items-center justify-center transition-colors shrink-0 group" aria-label="Send message">
+              <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="square" d="M5 12h14m-6-6l6 6-6 6"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Bottom mono keyboard helper -->
+          <div class="flex items-center justify-between mt-2 px-1 text-[10px] font-mono text-txt-dim select-none">
+            <span>ENTER TO SEND · SHIFT+ENTER FOR NEW LINE</span>
+            <span class="tracking-widest">SESSION_ID #0824-A1</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

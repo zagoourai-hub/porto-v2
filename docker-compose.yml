@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: file:/data/dev.db
+    volumes:
+      - portfolio-data:/data
+    restart: unless-stopped
+
+volumes:
+  portfolio-data:

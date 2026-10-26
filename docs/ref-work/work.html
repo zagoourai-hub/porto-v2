@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nopal Risfana — Selected Work Bento Grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Geist', 'sans-serif'],
+            mono: ['"Geist Mono"', 'monospace'],
+          },
+          colors: {
+            surface: '#f9fafb',
+            ink: '#111827',
+            muted: '#6b7280',
+            hairline: '#e5e7eb',
+            hairlineDark: '#9ca3af',
+            accent: '#e63946',
+            mockBg: '#090d16',
+            mockPanel: '#111827',
+            mockBorder: '#1f2937',
+            mockLine: '#374151',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    body {
+      background-color: #f9fafb;
+      color: #111827;
+      font-family: 'Geist', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .hairline-b {
+      border-bottom: 0.5px solid #e5e7eb;
+    }
+    .hairline-t {
+      border-top: 0.5px solid #e5e7eb;
+    }
+    .hairline-all {
+      border: 0.5px solid #e5e7eb;
+    }
+    .mock-border {
+      border: 0.5px solid #1f2937;
+    }
+    .mock-sub-border {
+      border: 0.5px solid #283344;
+    }
+    /* Hover tile demonstration styling as explicitly requested */
+    .tile-hover-demo {
+      border-color: #9ca3af !important;
+      background-color: #ffffff;
+    }
+    .tile-hover-demo .hover-shift-target {
+      transform: translateX(8px);
+    }
+    .tile-hover-demo .hover-link-target {
+      color: #e63946 !important;
+    }
+  </style>
+</head>
+<body class="bg-[#f9fafb] text-[#111827] min-h-screen antialiased flex flex-col justify-between selection:bg-[#e63946] selection:text-white">
+
+  <!-- TOP BAR: Hairline row with eyebrow & metadata -->
+  <header class="w-full hairline-b bg-[#f9fafb]">
+    <div class="max-w-[1200px] mx-auto px-6 h-14 flex items-center justify-between text-xs font-mono tracking-widest uppercase">
+      <div class="flex items-center gap-2 text-[#111827]">
+        <span class="inline-block w-2.5 h-2.5 bg-[#e63946]"></span>
+        <span class="font-semibold">03 / SELECTED WORK</span>
+      </div>
+      <div class="text-[#6b7280]">
+        2024 — 2026 (05)
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="w-full max-w-[1200px] mx-auto px-6 py-12 flex-1 flex flex-col justify-center">
+
+    <!-- HEADER: Title & Filter row -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 pb-8 hairline-b">
+      <div>
+        <h1 class="font-sans font-bold text-4xl md:text-5xl lg:text-[54px] leading-[1.05] tracking-[-0.04em] text-[#111827] uppercase">
+          THINGS I'VE BUILT.<br>
+          <span class="text-[#e63946]">THINGS THAT SHIP.</span>
+        </h1>
+      </div>
+
+      <div class="flex flex-col items-start lg:items-end gap-5 max-w-lg">
+        <p class="text-sm text-[#6b7280] leading-relaxed font-sans lg:text-right">
+          End-to-end web applications, modular commerce engines, and internal analytics systems engineered for durability, zero latency, and production rigor.
+        </p>
+
+        <!-- Filter tabs: Square buttons, NO radius -->
+        <nav aria-label="Filter projects" class="flex flex-wrap items-center gap-1.5 font-mono text-[11px] tracking-wider uppercase">
+          <button class="px-3.5 py-1.5 bg-[#111827] text-white font-medium hairline-all border-[#111827]">
+            ALL
+          </button>
+          <button class="px-3.5 py-1.5 bg-white text-[#6b7280] hover:text-[#111827] hairline-all hover:border-[#9ca3af] transition-colors">
+            WEB APP
+          </button>
+          <button class="px-3.5 py-1.5 bg-white text-[#6b7280] hover:text-[#111827] hairline-all hover:border-[#9ca3af] transition-colors">
+            E-COMMERCE
+          </button>
+          <button class="px-3.5 py-1.5 bg-white text-[#6b7280] hover:text-[#111827] hairline-all hover:border-[#9ca3af] transition-colors">
+            DASHBOARD
+          </button>
+          <button class="px-3.5 py-1.5 bg-white text-[#6b7280] hover:text-[#111827] hairline-all hover:border-[#9ca3af] transition-colors">
+            LANDING
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <!-- BENTO GRID: 3 columns, gap 24px, 0.5px border, flat squares, no shadow -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- TILE 1: LAPAK STORE (Row 1, Col 1) -->
+      <article class="hairline-all bg-white flex flex-col justify-between group transition-colors duration-150">
+        <!-- Dark navy header screen mockup panel -->
+        <div class="h-48 bg-[#090d16] p-3.5 flex flex-col justify-between font-mono text-[10px] text-gray-400 select-none overflow-hidden">
+          <div class="flex items-center justify-between pb-2 mock-border border-t-0 border-x-0 text-[9px] text-gray-400">
+            <span class="tracking-widest text-gray-300">LAPAK // STOREFRONT ENGINE</span>
+            <span class="text-gray-500">CART (3) — $480.00</span>
+          </div>
+          <!-- 2 product blocks mock -->
+          <div class="grid grid-cols-2 gap-2 my-auto">
+            <div class="bg-[#111827] p-2.5 mock-border flex flex-col justify-between h-24">
+              <div class="w-full h-10 bg-[#172033] mock-sub-border flex items-center justify-center text-[8px] text-gray-500 tracking-wider">
+                MOCKUP ITEM A
+              </div>
+              <div class="pt-1.5">
+                <div class="text-[9px] font-semibold text-gray-200">MECHANICAL KB-01</div>
+                <div class="text-[8px] text-gray-400">$185.00</div>
+              </div>
+            </div>
+            <div class="bg-[#111827] p-2.5 mock-border flex flex-col justify-between h-24">
+              <div class="w-full h-10 bg-[#172033] mock-sub-border flex items-center justify-center text-[8px] text-gray-500 tracking-wider">
+                MOCKUP ITEM B
+              </div>
+              <div class="pt-1.5">
+                <div class="text-[9px] font-semibold text-gray-200">STUDIO MONITORS</div>
+                <div class="text-[8px] text-gray-400">$295.00</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-1 text-[8px] text-gray-500 border-t border-gray-800">
+            <span>SSR CHECKOUT • STRIPE HOOKS</span>
+            <span class="text-emerald-400 font-mono">99.8% CONVERSION</span>
+          </div>
+        </div>
+
+        <!-- Tile Body -->
+        <div class="p-5 flex flex-col flex-1 justify-between">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#6b7280] mb-2 tracking-wider">
+              <span>01</span>
+              <span>E-COMMERCE · 2025</span>
+            </div>
+            <div class="flex items-center justify-between gap-3 mb-1.5">
+              <h2 class="font-sans font-bold text-[22px] tracking-tight text-[#111827] uppercase">
+                LAPAK STORE
+              </h2>
+              <a href="#lapak" class="font-mono text-xs font-medium text-[#111827] underline underline-offset-4 hover:text-[#e63946] transition-colors shrink-0">
+                VIEW ↗
+              </a>
+            </div>
+            <p class="text-xs text-[#6b7280] line-clamp-1 mb-4 font-sans">
+              High-performance headless marketplace with sub-second catalogue filtering and dynamic inventory sync.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-[#111827]">
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">NEXT.JS 15</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">TAILWIND</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">STRIPE</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TILE 2: BOOKLY (Row 1, Col 2) -->
+      <article class="hairline-all bg-white flex flex-col justify-between group transition-colors duration-150">
+        <!-- Dark navy header screen mockup panel -->
+        <div class="h-48 bg-[#090d16] p-3.5 flex flex-col justify-between font-mono text-[10px] text-gray-400 select-none overflow-hidden">
+          <div class="flex items-center justify-between pb-2 mock-border border-t-0 border-x-0 text-[9px]">
+            <span class="tracking-widest text-gray-300">BOOKLY // SCHEDULER MATRIX</span>
+            <span class="text-gray-500">TIMEZONE: GMT+7</span>
+          </div>
+          <!-- Calendar slots mock -->
+          <div class="grid grid-cols-4 gap-1.5 my-auto">
+            <div class="bg-[#111827] p-2 mock-border text-center">
+              <div class="text-[8px] text-gray-500">MON 14</div>
+              <div class="text-[11px] font-bold text-gray-200 mt-1">09:00</div>
+              <div class="text-[7px] text-emerald-400 mt-0.5">OPEN</div>
+            </div>
+            <div class="bg-[#111827] p-2 mock-border text-center bg-[#172033]">
+              <div class="text-[8px] text-gray-500">MON 14</div>
+              <div class="text-[11px] font-bold text-gray-200 mt-1">11:30</div>
+              <div class="text-[7px] text-gray-500 mt-0.5">BOOKED</div>
+            </div>
+            <div class="bg-[#111827] p-2 mock-border text-center">
+              <div class="text-[8px] text-gray-500">TUE 15</div>
+              <div class="text-[11px] font-bold text-gray-200 mt-1">14:00</div>
+              <div class="text-[7px] text-emerald-400 mt-0.5">OPEN</div>
+            </div>
+            <div class="bg-[#111827] p-2 mock-border text-center">
+              <div class="text-[8px] text-gray-500">WED 16</div>
+              <div class="text-[11px] font-bold text-gray-200 mt-1">16:30</div>
+              <div class="text-[7px] text-emerald-400 mt-0.5">OPEN</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-1 text-[8px] text-gray-500 border-t border-gray-800">
+            <span>CALENDAR SYNC • WEBSOCKETS</span>
+            <span class="text-gray-400">CONFIRMATION: 1.2s</span>
+          </div>
+        </div>
+
+        <!-- Tile Body -->
+        <div class="p-5 flex flex-col flex-1 justify-between">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#6b7280] mb-2 tracking-wider">
+              <span>02</span>
+              <span>WEB APP · 2025</span>
+            </div>
+            <div class="flex items-center justify-between gap-3 mb-1.5">
+              <h2 class="font-sans font-bold text-[22px] tracking-tight text-[#111827] uppercase">
+                BOOKLY
+              </h2>
+              <a href="#bookly" class="font-mono text-xs font-medium text-[#111827] underline underline-offset-4 hover:text-[#e63946] transition-colors shrink-0">
+                VIEW ↗
+              </a>
+            </div>
+            <p class="text-xs text-[#6b7280] line-clamp-1 mb-4 font-sans">
+              Collaborative team calendar and client booking software with bi-directional Google & Outlook sync.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-[#111827]">
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">TYPESCRIPT</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">NODE.JS</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">REDIS</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TILE 3: ADMINKIT (Row 1, Col 3) — DEMO HOVER STATE AS EXPLICITLY REQUESTED IN PROMPT -->
+      <!-- Prompt requirement: "One tile shown in HOVER state: border darkens, title row shifts 8px right, 'VIEW ↗' turns red." -->
+      <article class="hairline-all tile-hover-demo flex flex-col justify-between transition-all duration-150 relative">
+        <!-- Visual marker pill showing hover demo -->
+        <div class="absolute top-2 right-2 z-10 font-mono text-[9px] uppercase px-1.5 py-0.5 bg-[#111827] text-white tracking-widest border border-gray-700">
+          HOVER STATE
+        </div>
+
+        <!-- Dark navy header screen mockup panel -->
+        <div class="h-48 bg-[#090d16] p-3.5 flex flex-col justify-between font-mono text-[10px] text-gray-400 select-none overflow-hidden">
+          <div class="flex items-center justify-between pb-2 mock-border border-t-0 border-x-0 text-[9px]">
+            <span class="tracking-widest text-gray-300">ADMINKIT // ENTERPRISE CMS</span>
+            <span class="text-gray-500">ROLE: SUPERADMIN</span>
+          </div>
+          <!-- Data table mock with ACTIVE / PENDING rows -->
+          <div class="my-auto mock-border bg-[#111827] overflow-hidden">
+            <div class="grid grid-cols-4 px-2 py-1 bg-[#172033] text-[7.5px] font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-800">
+              <span>CLIENT</span>
+              <span>TIER</span>
+              <span class="text-right">REVENUE</span>
+              <span class="text-right">STATUS</span>
+            </div>
+            <div class="grid grid-cols-4 px-2 py-1 text-[8px] text-gray-300 border-b border-gray-800/60">
+              <span class="truncate">ACME CORP</span>
+              <span class="text-gray-500">ENTERPRISE</span>
+              <span class="text-right">$12,400</span>
+              <span class="text-right text-emerald-400 font-mono">ACTIVE</span>
+            </div>
+            <div class="grid grid-cols-4 px-2 py-1 text-[8px] text-gray-300 border-b border-gray-800/60">
+              <span class="truncate">VERTEX LABS</span>
+              <span class="text-gray-500">GROWTH</span>
+              <span class="text-right">$4,800</span>
+              <span class="text-right text-emerald-400 font-mono">ACTIVE</span>
+            </div>
+            <div class="grid grid-cols-4 px-2 py-1 text-[8px] text-gray-300">
+              <span class="truncate">SYNTHETIX</span>
+              <span class="text-gray-500">CUSTOM</span>
+              <span class="text-right">$8,250</span>
+              <span class="text-right text-amber-400 font-mono">PENDING</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-1 text-[8px] text-gray-500 border-t border-gray-800">
+            <span>RBAC • AUDIT LOGS</span>
+            <span class="text-gray-400">500+ DAILY SEATS</span>
+          </div>
+        </div>
+
+        <!-- Tile Body with shift and active red view link -->
+        <div class="p-5 flex flex-col flex-1 justify-between">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#6b7280] mb-2 tracking-wider">
+              <span>03</span>
+              <span>DASHBOARD · 2024</span>
+            </div>
+            <!-- Title row shifted 8px right via class .hover-shift-target -->
+            <div class="flex items-center justify-between gap-3 mb-1.5 transition-transform duration-150 hover-shift-target">
+              <h2 class="font-sans font-bold text-[22px] tracking-tight text-[#111827] uppercase">
+                ADMINKIT
+              </h2>
+              <a href="#adminkit" class="font-mono text-xs font-medium underline underline-offset-4 transition-colors shrink-0 hover-link-target text-[#e63946]">
+                VIEW ↗
+              </a>
+            </div>
+            <p class="text-xs text-[#6b7280] line-clamp-1 mb-4 font-sans">
+              Modular back-office control center featuring granular role permissions, instant schema audits, and bulk data export pipelines.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-[#111827]">
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">REACT</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">PRISMA</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">SQLITE</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TILE 4: WIDE FEATURED NEXUS ANALYTICS (Row 2, Spanning 2 Columns) -->
+      <article class="md:col-span-2 hairline-all bg-white flex flex-col justify-between group transition-colors duration-150">
+        <!-- Dark navy header screen mockup panel with 3 stat boxes and bar chart (with one signal-red bar) -->
+        <div class="h-56 bg-[#090d16] p-4 flex flex-col justify-between font-mono text-gray-400 select-none overflow-hidden">
+          <!-- Top bar with red featured badge -->
+          <div class="flex items-center justify-between pb-2 mock-border border-t-0 border-x-0 text-[10px]">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#e63946] inline-block"></span>
+              <span class="tracking-widest text-gray-200 font-semibold">NEXUS // REALTIME TELEMETRY</span>
+              <span class="px-1.5 py-0.2 bg-[#e63946] text-white text-[8px] font-bold tracking-widest uppercase">FEATURED</span>
+            </div>
+            <div class="text-[9px] text-gray-500">
+              LATENCY: 14MS &nbsp;·&nbsp; STATUS: <span class="text-emerald-400">HEALTHY</span>
+            </div>
+          </div>
+
+          <!-- 3 Stat boxes -->
+          <div class="grid grid-cols-3 gap-2 my-2">
+            <div class="bg-[#111827] p-2 mock-border">
+              <div class="text-[8px] text-gray-500 tracking-wider">TOTAL THROUGHPUT</div>
+              <div class="text-sm md:text-base font-bold text-gray-100 font-mono mt-0.5">8.42M</div>
+              <div class="text-[7.5px] text-emerald-400 mt-0.5">↑ +14.2% vs last cycle</div>
+            </div>
+            <div class="bg-[#111827] p-2 mock-border">
+              <div class="text-[8px] text-gray-500 tracking-wider">AVG RESPONSE TIME</div>
+              <div class="text-sm md:text-base font-bold text-gray-100 font-mono mt-0.5">32ms</div>
+              <div class="text-[7.5px] text-gray-400 mt-0.5">p99 &lt; 95ms</div>
+            </div>
+            <div class="bg-[#111827] p-2 mock-border">
+              <div class="text-[8px] text-gray-500 tracking-wider">CRITICAL FAULTS</div>
+              <div class="text-sm md:text-base font-bold text-gray-100 font-mono mt-0.5">0.00%</div>
+              <div class="text-[7.5px] text-emerald-400 mt-0.5">99.998% UPTIME</div>
+            </div>
+          </div>
+
+          <!-- Bar chart with one signal red bar (#e63946) -->
+          <div class="bg-[#111827] p-2.5 mock-border flex flex-col justify-end">
+            <div class="flex items-center justify-between text-[8px] text-gray-500 mb-1.5">
+              <span>DISTRIBUTED INGEST PEAKS (HOURLY)</span>
+              <span>CLUSTER #04 ACTIVE</span>
+            </div>
+            <div class="flex items-end gap-1.5 h-10 w-full pt-1">
+              <div class="flex-1 bg-[#1f2937] h-[30%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[45%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[35%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[60%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[50%]"></div>
+              <!-- Specified ONE RED BAR -->
+              <div class="flex-1 bg-[#e63946] h-[95%] relative">
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-[7px] text-[#e63946] font-mono font-bold">PEAK</span>
+              </div>
+              <div class="flex-1 bg-[#1f2937] h-[70%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[40%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[55%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[65%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[30%]"></div>
+              <div class="flex-1 bg-[#1f2937] h-[48%]"></div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-1 text-[8px] text-gray-500 border-t border-gray-800">
+            <span>NODE ID: US-EAST-091A</span>
+            <span>POSTGRES 16.2 / READ REPLICAS SYNCED</span>
+          </div>
+        </div>
+
+        <!-- Wide Tile Body -->
+        <div class="p-6 flex flex-col justify-between flex-1">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#6b7280] mb-2 tracking-wider">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-[#111827]">04</span>
+                <span>//</span>
+                <span class="text-[#e63946] font-semibold">FEATURED ARCHITECTURE</span>
+              </div>
+              <span>WEB APP · 2026</span>
+            </div>
+            <div class="flex items-center justify-between gap-4 mb-2">
+              <h2 class="font-sans font-bold text-2xl lg:text-[26px] tracking-tight text-[#111827] uppercase">
+                NEXUS ANALYTICS
+              </h2>
+              <div class="flex items-center gap-4">
+                <a href="#nexus-demo" class="hidden sm:inline-block font-mono text-xs font-medium text-[#6b7280] underline underline-offset-4 hover:text-[#111827] transition-colors">
+                  LIVE DEMO ↗
+                </a>
+                <a href="#nexus" class="font-mono text-xs font-semibold text-[#111827] underline underline-offset-4 hover:text-[#e63946] transition-colors shrink-0">
+                  VIEW ↗
+                </a>
+              </div>
+            </div>
+            <p class="text-sm text-[#6b7280] line-clamp-2 mb-4 font-sans max-w-2xl">
+              Full-stack infrastructure telemetry dashboard serving sub-50ms live query aggregations, automated cluster scaling alerts, and interactive event time-series visualizations.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 font-mono text-[10px] text-[#111827]">
+            <span class="px-2.5 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">NEXT.JS</span>
+            <span class="px-2.5 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">TYPESCRIPT</span>
+            <span class="px-2.5 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">POSTGRES</span>
+            <span class="px-2.5 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">TAILWIND CSS</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TILE 5: PULSE LANDING (Row 2, Col 3 - Single Tile) -->
+      <article class="hairline-all bg-white flex flex-col justify-between group transition-colors duration-150">
+        <!-- Dark navy header screen mockup panel with centered headline box -->
+        <div class="h-56 bg-[#090d16] p-4 flex flex-col justify-between font-mono text-gray-400 select-none overflow-hidden">
+          <div class="flex items-center justify-between pb-2 mock-border border-t-0 border-x-0 text-[9px]">
+            <span class="tracking-widest text-gray-300">PULSE // CLOUD MARKETING</span>
+            <span class="text-emerald-400 font-mono">LIGHTHOUSE: 100</span>
+          </div>
+          <!-- Centered headline box mock -->
+          <div class="my-auto mock-border bg-[#111827] p-4 text-center flex flex-col items-center justify-center">
+            <span class="text-[7.5px] font-mono tracking-widest text-[#e63946] uppercase mb-1">V2.4 LAUNCH</span>
+            <div class="text-xs font-bold text-gray-100 font-sans uppercase tracking-tight">
+              NEXT-GEN DEVELOPER TOOLS
+            </div>
+            <div class="text-[8px] text-gray-500 mt-1 max-w-[180px] leading-tight">
+              Zero-config builds with instant preview deployments.
+            </div>
+            <div class="mt-2.5 px-2.5 py-0.5 bg-[#e63946] text-white text-[7.5px] font-mono font-semibold tracking-wider uppercase">
+              GET STARTED
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-1 text-[8px] text-gray-500 border-t border-gray-800">
+            <span>35KB INITIAL BUNDLE</span>
+            <span>ACCESSIBILITY: AAA</span>
+          </div>
+        </div>
+
+        <!-- Tile Body -->
+        <div class="p-6 flex flex-col flex-1 justify-between">
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs text-[#6b7280] mb-2 tracking-wider">
+              <span>05</span>
+              <span>LANDING · 2024</span>
+            </div>
+            <div class="flex items-center justify-between gap-3 mb-1.5">
+              <h2 class="font-sans font-bold text-[22px] tracking-tight text-[#111827] uppercase">
+                PULSE LANDING
+              </h2>
+              <a href="#pulse" class="font-mono text-xs font-medium text-[#111827] underline underline-offset-4 hover:text-[#e63946] transition-colors shrink-0">
+                VIEW ↗
+              </a>
+            </div>
+            <p class="text-xs text-[#6b7280] line-clamp-1 mb-4 font-sans">
+              Marketing engine for a developer tooling startup tuned for 100/100 Lighthouse performance, fluid micro-interactions, and high conversion.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-[#111827]">
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">ASTRO</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">TAILWIND</span>
+            <span class="px-2 py-0.5 bg-[#f3f4f6] hairline-all border-[#e5e7eb]">FRAMER</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- BOTTOM BAR: Hairline row with GitHub notice & square ghost button -->
+  <footer class="w-full hairline-t bg-[#f9fafb] mt-12">
+    <div class="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between text-xs font-mono tracking-wider">
+      <div class="text-[#6b7280]">
+        // 05 PROJECTS SHOWN — MORE ON GITHUB
+      </div>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="px-4 py-2 hairline-all border-[#111827] text-[#111827] hover:bg-[#111827] hover:text-white transition-colors uppercase font-medium flex items-center gap-2">
+        <span>ALL PROJECTS</span>
+        <span>→</span>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>

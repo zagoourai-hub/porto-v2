@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOPAL.DEV — Dashboard Admin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      border-radius: 0px !important;
+      box-shadow: none !important;
+    }
+    body {
+      font-family: 'Geist', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono {
+      font-family: 'Geist Mono', monospace;
+    }
+    .hairline-border {
+      border-color: #e5e7eb;
+      border-width: 0.5px;
+    }
+    .hairline-r {
+      border-right: 0.5px solid #e5e7eb;
+    }
+    .hairline-l {
+      border-left: 0.5px solid #e5e7eb;
+    }
+    .hairline-t {
+      border-top: 0.5px solid #e5e7eb;
+    }
+    .hairline-b {
+      border-bottom: 0.5px solid #e5e7eb;
+    }
+    .hairline-all {
+      border: 0.5px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body class="bg-[#f9fafb] text-[#111827] min-h-screen flex antialiased select-none">
+
+  <!-- SIDEBAR (240px) -->
+  <aside class="w-[240px] flex-shrink-0 bg-[#f9fafb] hairline-r flex flex-col justify-between h-screen sticky top-0">
+    <div>
+      <!-- Brand Header -->
+      <div class="h-16 px-6 flex items-center hairline-b gap-2.5">
+        <span class="w-2.5 h-2.5 bg-[#e63946] inline-block flex-shrink-0"></span>
+        <span class="font-mono text-xs font-bold tracking-[0.14em] text-[#111827]">NOPAL.DEV</span>
+        <span class="font-mono text-[10px] text-[#9ca3af] ml-auto">v2.4</span>
+      </div>
+
+      <!-- Navigation Section -->
+      <div class="pt-6 pb-2">
+        <div class="px-6 mb-2">
+          <span class="font-mono text-[10px] uppercase tracking-[0.16em] text-[#9ca3af] font-semibold">MENU</span>
+        </div>
+        <nav class="flex flex-col">
+          <!-- RINGKASAN (Active) -->
+          <a href="#" class="flex items-center justify-between px-6 py-2.5 bg-[#f3f4f6] border-l-[2px] border-[#e63946] text-[#111827] font-mono text-xs font-medium tracking-wide">
+            <span class="flex items-center gap-2.5">
+              <span class="text-[#e63946] font-bold">#</span>
+              <span>RINGKASAN</span>
+            </span>
+            <span class="w-1.5 h-1.5 bg-[#e63946]"></span>
+          </a>
+
+          <!-- PROYEK -->
+          <a href="#" class="flex items-center justify-between px-6 py-2.5 text-[#6b7280] hover:text-[#111827] hover:bg-[#f3f4f6] font-mono text-xs font-medium tracking-wide transition-colors">
+            <span class="flex items-center gap-2.5">
+              <span class="text-[#9ca3af]">/</span>
+              <span>PROYEK</span>
+            </span>
+            <span class="font-mono text-[10px] text-[#9ca3af]">05</span>
+          </a>
+
+          <!-- PESAN MASUK -->
+          <a href="#" class="flex items-center justify-between px-6 py-2.5 text-[#6b7280] hover:text-[#111827] hover:bg-[#f3f4f6] font-mono text-xs font-medium tracking-wide transition-colors">
+            <span class="flex items-center gap-2.5">
+              <span class="text-[#9ca3af]">/</span>
+              <span>PESAN MASUK</span>
+            </span>
+            <span class="w-4 h-4 bg-[#e63946] text-white font-mono text-[10px] flex items-center justify-center font-bold">3</span>
+          </a>
+
+          <!-- CHAT AI -->
+          <a href="#" class="flex items-center justify-between px-6 py-2.5 text-[#6b7280] hover:text-[#111827] hover:bg-[#f3f4f6] font-mono text-xs font-medium tracking-wide transition-colors">
+            <span class="flex items-center gap-2.5">
+              <span class="text-[#9ca3af]">/</span>
+              <span>CHAT AI</span>
+            </span>
+            <span class="font-mono text-[9px] px-1 py-0.5 bg-[#8b7cf6]/10 text-[#8b7cf6] font-semibold">RAG</span>
+          </a>
+
+          <!-- MUSIK -->
+          <a href="#" class="flex items-center justify-between px-6 py-2.5 text-[#6b7280] hover:text-[#111827] hover:bg-[#f3f4f6] font-mono text-xs font-medium tracking-wide transition-colors">
+            <span class="flex items-center gap-2.5">
+              <span class="text-[#9ca3af]">/</span>
+              <span>MUSIK</span>
+            </span>
+            <span class="font-mono text-[10px] text-[#9ca3af]">8 TRK</span>
+          </a>
+
+          <!-- PENGATURAN -->
+          <a href="#" class="flex items-center justify-between px-6 py-2.5 text-[#6b7280] hover:text-[#111827] hover:bg-[#f3f4f6] font-mono text-xs font-medium tracking-wide transition-colors">
+            <span class="flex items-center gap-2.5">
+              <span class="text-[#9ca3af]">/</span>
+              <span>PENGATURAN</span>
+            </span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Quick Server Status Info -->
+      <div class="px-6 py-4 mx-4 mt-6 bg-[#f3f4f6] hairline-all">
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-[10px] text-[#6b7280] tracking-wider uppercase">NODE JAKARTA</span>
+          <span class="inline-flex items-center gap-1 font-mono text-[10px] text-[#111827]">
+            <span class="w-1.5 h-1.5 bg-emerald-500"></span> AKTIF
+          </span>
+        </div>
+        <div class="font-mono text-[10px] text-[#6b7280] leading-tight">
+          LATENSI: 14MS // TLS 1.3
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Footer / Profile -->
+    <div class="p-4 hairline-t bg-[#f9fafb]">
+      <div class="p-3 bg-[#f3f4f6] hairline-all flex items-center justify-between mb-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 bg-[#111827] text-white font-mono text-xs font-bold flex items-center justify-center">
+            NR
+          </div>
+          <div>
+            <div class="font-semibold text-xs leading-none text-[#111827]">Nopal Risfana</div>
+            <div class="font-mono text-[10px] text-[#6b7280] mt-1 leading-none tracking-wider">ADMINISTRATOR</div>
+          </div>
+        </div>
+        <span class="w-2 h-2 bg-[#e63946]" title="Admin Level 1"></span>
+      </div>
+      <button class="w-full py-2 bg-transparent hairline-all text-[#6b7280] hover:text-[#e63946] hover:border-[#e63946] font-mono text-[11px] tracking-wider text-center transition-colors">
+        KELUAR →
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN WRAPPER -->
+  <div class="flex-1 flex flex-col min-w-0">
+
+    <!-- TOPBAR (h-16, hairline-b) -->
+    <header class="h-16 px-8 flex items-center justify-between bg-[#f9fafb] hairline-b sticky top-0 z-20">
+      <!-- Left: Breadcrumb -->
+      <div class="flex items-center gap-2">
+        <span class="font-mono text-xs text-[#9ca3af]">DASHBOARD</span>
+        <span class="font-mono text-xs text-[#9ca3af]">/</span>
+        <span class="font-mono text-xs font-bold text-[#111827] tracking-wider">RINGKASAN</span>
+      </div>
+
+      <!-- Right: Search + Action Buttons -->
+      <div class="flex items-center gap-3">
+        <!-- Search Input -->
+        <div class="relative w-64">
+          <input 
+            type="text" 
+            placeholder="CARI PROYEK, PESAN…" 
+            class="w-full bg-[#f3f4f6] hairline-all px-3 py-1.5 font-mono text-xs text-[#111827] placeholder-[#9ca3af] focus:outline-none focus:border-[#111827] transition-colors"
+          />
+        </div>
+
+        <!-- External Site Button -->
+        <a 
+          href="#" 
+          class="px-3.5 py-1.5 bg-transparent hairline-all text-[#111827] hover:bg-[#f3f4f6] font-mono text-xs tracking-wider font-medium flex items-center gap-1.5 transition-colors"
+        >
+          <span>LIHAT SITUS</span>
+          <span class="text-[#6b7280]">↗</span>
+        </a>
+
+        <!-- New Project Button -->
+        <button 
+          class="px-4 py-1.5 bg-[#e63946] hover:bg-[#c92a37] text-white font-mono text-xs font-bold tracking-wider flex items-center gap-1.5 transition-colors"
+        >
+          <span>+ PROYEK BARU</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT AREA -->
+    <main class="p-8 space-y-8 max-w-[1200px] w-full mx-auto">
+
+      <!-- WELCOME / HEADER -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between pb-6 hairline-b gap-4">
+        <div>
+          <div class="font-mono text-[11px] text-[#6b7280] tracking-wider uppercase mb-2">
+            KAMIS, 16 OKT 2026 · STATUS: TERSEDIA UNTUK PROYEK
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-[-0.04em] text-[#111827] leading-none">
+            SELAMAT PAGI, <span class="text-[#e63946]">NOPAL.</span>
+          </h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="font-mono text-xs text-[#6b7280] text-right">
+            <span>SESI AKTIF: </span>
+            <span class="text-[#111827] font-semibold">JAKARTA (WIB)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 STATS ROW (Separated by hairlines, no card shadows) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 bg-[#f3f4f6] hairline-all">
+        <!-- Stat 1 -->
+        <div class="p-5 sm:border-r border-b lg:border-b-0 hairline-border bg-[#f9fafb]">
+          <div class="font-mono text-[10px] text-[#6b7280] tracking-wider uppercase mb-2">
+            // 01 PENGUNJUNG 30 HARI
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-extrabold tracking-[-0.03em] text-[#111827]">4.218</span>
+            <span class="font-mono text-xs font-semibold text-emerald-600">↑12%</span>
+          </div>
+          <div class="font-mono text-[10px] text-[#9ca3af] mt-1.5">
+            +452 DIBANDING BULAN LALU
+          </div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="p-5 lg:border-r border-b lg:border-b-0 hairline-border bg-[#f9fafb]">
+          <div class="font-mono text-[10px] text-[#6b7280] tracking-wider uppercase mb-2">
+            // 02 PESAN BARU
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-extrabold tracking-[-0.03em] text-[#e63946]">3</span>
+            <span class="font-mono text-[10px] px-1.5 py-0.5 bg-[#e63946]/10 text-[#e63946] font-bold">PERLU DIBALAS</span>
+          </div>
+          <div class="font-mono text-[10px] text-[#9ca3af] mt-1.5">
+            TERAKHIR: 42 MENIT LALU
+          </div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="p-5 sm:border-r border-b sm:border-b-0 hairline-border bg-[#f9fafb]">
+          <div class="font-mono text-[10px] text-[#6b7280] tracking-wider uppercase mb-2">
+            // 03 PERCAKAPAN CHAT AI
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-extrabold tracking-[-0.03em] text-[#111827]">186</span>
+            <span class="font-mono text-xs text-[#6b7280]">SESI</span>
+          </div>
+          <div class="font-mono text-[10px] text-[#9ca3af] mt-1.5">
+            94% PERTANYAAN TERJAWAB
+          </div>
+        </div>
+
+        <!-- Stat 4 -->
+        <div class="p-5 bg-[#f9fafb]">
+          <div class="font-mono text-[10px] text-[#6b7280] tracking-wider uppercase mb-2">
+            // 04 PROYEK TAYANG
+          </div>
+          <div class="flex items-baseline gap-2">
+            <span class="text-3xl font-extrabold tracking-[-0.03em] text-[#111827]">05</span>
+            <span class="font-mono text-[10px] px-1.5 py-0.5 bg-emerald-500/10 text-emerald-700 font-bold">SEMUA AKTIF</span>
+          </div>
+          <div class="font-mono text-[10px] text-[#9ca3af] mt-1.5">
+            1 DRAF DALAM REVIEW
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID ROW 1: TRAFFIC CHART (8 cols) + TRAFFIC SOURCES (4 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left 8 cols: Traffic 30 Days Bar Chart -->
+        <div class="lg:col-span-8 bg-[#f9fafb] hairline-all flex flex-col justify-between">
+          <div>
+            <!-- Panel Header -->
+            <div class="p-5 hairline-b flex items-center justify-between bg-[#f9fafb]">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-[#111827]"></span>
+                <h3 class="font-mono text-xs font-bold text-[#111827] tracking-wider uppercase">LALU LINTAS 30 HARI</h3>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="flex items-center gap-1.5 font-mono text-[10px] text-[#6b7280]">
+                  <span class="w-2 h-2 bg-[#d1d5db]"></span> RIWAYAT
+                </div>
+                <div class="flex items-center gap-1.5 font-mono text-[10px] text-[#111827] font-semibold">
+                  <span class="w-2 h-2 bg-[#e63946]"></span> HARI INI (248)
+                </div>
+              </div>
+            </div>
+
+            <!-- Bar Chart Container -->
+            <div class="p-6">
+              <div class="flex items-end justify-between h-44 gap-1 sm:gap-2 pt-6 pb-2 hairline-b">
+                <!-- 30 Daily bars -->
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 38%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 45%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 32%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 52%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 60%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 48%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 42%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 68%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 75%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 58%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 62%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 70%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 54%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 48%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 64%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 59%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 72%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 80%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 66%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 55%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 61%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 78%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 70%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 65%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 84%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 88%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 74%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 82%;"></div>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e5e7eb] group-hover:bg-[#d1d5db] transition-colors" style="height: 79%;"></div>
+                </div>
+                <!-- Hari Ini (Red bar) -->
+                <div class="flex-1 flex flex-col items-center gap-1 h-full justify-end group">
+                  <div class="w-full bg-[#e63946]" style="height: 94%;"></div>
+                </div>
+              </div>
+
+              <!-- Monospace X-Axis Labels -->
+              <div class="flex justify-between font-mono text-[10px] text-[#9ca3af] pt-2">
+                <span>17 SEP</span>
+                <span>24 SEP</span>
+                <span>01 OKT</span>
+                <span>08 OKT</span>
+                <span class="text-[#e63946] font-bold">16 OKT (HARI INI)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Telemetry Footer -->
+          <div class="px-6 py-3 bg-[#f3f4f6] hairline-t flex items-center justify-between font-mono text-[10px] text-[#6b7280]">
+            <div>PUNCAK BULAN INI: <span class="text-[#111827] font-semibold">274 KUNJUNGAN / HARI</span></div>
+            <div>RATA-RATA: <span class="text-[#111827] font-semibold">140.6 / HARI</span></div>
+          </div>
+        </div>
+
+        <!-- Right 4 cols: Traffic Sources -->
+        <div class="lg:col-span-4 bg-[#f9fafb] hairline-all flex flex-col justify-between">
+          <div>
+            <!-- Header -->
+            <div class="p-5 hairline-b flex items-center justify-between bg-[#f9fafb]">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-[#111827]"></span>
+                <h3 class="font-mono text-xs font-bold text-[#111827] tracking-wider uppercase">SUMBER TRAFFIC</h3>
+              </div>
+              <span class="font-mono text-[10px] text-[#9ca3af]">30 HARI</span>
+            </div>
+
+            <!-- List of Sources with Hairline rows & thin percentage bars -->
+            <div class="divide-y divide-[#e5e7eb]">
+              <!-- GOOGLE 48% -->
+              <div class="p-4 hover:bg-[#f3f4f6] transition-colors">
+                <div class="flex items-center justify-between mb-1.5 font-mono text-xs">
+                  <span class="font-medium text-[#111827]">GOOGLE SEARCH</span>
+                  <span class="font-bold text-[#111827]">48%</span>
+                </div>
+                <div class="w-full h-1 bg-[#e5e7eb]">
+                  <div class="h-full bg-[#111827]" style="width: 48%;"></div>
+                </div>
+                <div class="flex justify-between font-mono text-[10px] text-[#9ca3af] mt-1">
+                  <span>ORGANIK / SEO</span>
+                  <span>2.024 KUNJUNGAN</span>
+                </div>
+              </div>
+
+              <!-- LANGSUNG 22% -->
+              <div class="p-4 hover:bg-[#f3f4f6] transition-colors">
+                <div class="flex items-center justify-between mb-1.5 font-mono text-xs">
+                  <span class="font-medium text-[#111827]">LANGSUNG</span>
+                  <span class="font-bold text-[#111827]">22%</span>
+                </div>
+                <div class="w-full h-1 bg-[#e5e7eb]">
+                  <div class="h-full bg-[#111827]" style="width: 22%;"></div>
+                </div>
+                <div class="flex justify-between font-mono text-[10px] text-[#9ca3af] mt-1">
+                  <span>URL KETIK / BOOKMARK</span>
+                  <span>928 KUNJUNGAN</span>
+                </div>
+              </div>
+
+              <!-- GITHUB 16% -->
+              <div class="p-4 hover:bg-[#f3f4f6] transition-colors">
+                <div class="flex items-center justify-between mb-1.5 font-mono text-xs">
+                  <span class="font-medium text-[#111827]">GITHUB REPOSITORI</span>
+                  <span class="font-bold text-[#111827]">16%</span>
+                </div>
+                <div class="w-full h-1 bg-[#e5e7eb]">
+                  <div class="h-full bg-[#111827]" style="width: 16%;"></div>
+                </div>
+                <div class="flex justify-between font-mono text-[10px] text-[#9ca3af] mt-1">
+                  <span>PROFIL & REPO PINNED</span>
+                  <span>675 KUNJUNGAN</span>
+                </div>
+              </div>
+
+              <!-- LINKEDIN 14% -->
+              <div class="p-4 hover:bg-[#f3f4f6] transition-colors">
+                <div class="flex items-center justify-between mb-1.5 font-mono text-xs">
+                  <span class="font-medium text-[#111827]">LINKEDIN</span>
+                  <span class="font-bold text-[#111827]">14%</span>
+                </div>
+                <div class="w-full h-1 bg-[#e5e7eb]">
+                  <div class="h-full bg-[#111827]" style="width: 14%;"></div>
+                </div>
+                <div class="flex justify-between font-mono text-[10px] text-[#9ca3af] mt-1">
+                  <span>POSTINGAN & JARINGAN</span>
+                  <span>591 KUNJUNGAN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer summary -->
+          <div class="px-5 py-3 bg-[#f3f4f6] hairline-t font-mono text-[10px] text-[#6b7280] flex justify-between">
+            <span>TOTAL PERUJUK: 4 SALURAN UTAMA</span>
+            <span class="text-[#e63946] font-semibold">100% TERLACUR</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- GRID ROW 2: PESAN MASUK TERBARU (Table) + DAFTAR PROYEK -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- Left: Pesan Masuk Terbaru (6 or 7 cols) -->
+        <div class="lg:col-span-7 bg-[#f9fafb] hairline-all">
+          <!-- Panel Header -->
+          <div class="p-5 hairline-b flex items-center justify-between bg-[#f9fafb]">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#e63946]"></span>
+              <h3 class="font-mono text-xs font-bold text-[#111827] tracking-wider uppercase">PESAN MASUK TERBARU</h3>
+            </div>
+            <a href="#" class="font-mono text-[11px] text-[#6b7280] hover:text-[#e63946] transition-colors">
+              LIHAT SEMUA (18) →
+            </a>
+          </div>
+
+          <!-- Table with 4 rows -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#f3f4f6] hairline-b font-mono text-[10px] text-[#6b7280] uppercase tracking-wider">
+                  <th class="py-2.5 px-4 font-semibold">PENGIRIM</th>
+                  <th class="py-2.5 px-4 font-semibold">SUBJEK</th>
+                  <th class="py-2.5 px-3 font-semibold">WAKTU</th>
+                  <th class="py-2.5 px-4 font-semibold text-right">STATUS</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#e5e7eb] text-xs">
+                <!-- Baris 1: BARU -->
+                <tr class="hover:bg-[#f3f4f6] transition-colors">
+                  <td class="py-3 px-4">
+                    <div class="font-semibold text-[#111827]">Julian Vance</div>
+                    <div class="font-mono text-[10px] text-[#6b7280]">julian@techvance.io</div>
+                  </td>
+                  <td class="py-3 px-4 text-[#111827]">
+                    Tawaran Kontrak: Telemetry Dashboard Next.js
+                  </td>
+                  <td class="py-3 px-3 font-mono text-[10px] text-[#6b7280] whitespace-nowrap">
+                    42M LALU
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <span class="inline-block px-1.5 py-0.5 bg-[#e63946] text-white font-mono text-[9px] font-bold tracking-wider">
+                      BARU
+                    </span>
+                  </td>
+                </tr>
+
+                <!-- Baris 2: BARU -->
+                <tr class="hover:bg-[#f3f4f6] transition-colors">
+                  <td class="py-3 px-4">
+                    <div class="font-semibold text-[#111827]">Sarah Pratama</div>
+                    <div class="font-mono text-[10px] text-[#6b7280]">sarah@lumina.id</div>
+                  </td>
+                  <td class="py-3 px-4 text-[#111827]">
+                    Diskusi Desain Sistem & Headless Commerce
+                  </td>
+                  <td class="py-3 px-3 font-mono text-[10px] text-[#6b7280] whitespace-nowrap">
+                    3J LALU
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <span class="inline-block px-1.5 py-0.5 bg-[#e63946] text-white font-mono text-[9px] font-bold tracking-wider">
+                      BARU
+                    </span>
+                  </td>
+                </tr>
+
+                <!-- Baris 3: BARU -->
+                <tr class="hover:bg-[#f3f4f6] transition-colors">
+                  <td class="py-3 px-4">
+                    <div class="font-semibold text-[#111827]">Aditya Wicaksono</div>
+                    <div class="font-mono text-[10px] text-[#6b7280]">aditya@karya-kreatif.com</div>
+                  </td>
+                  <td class="py-3 px-4 text-[#111827]">
+                    Pertanyaan Ketersediaan Q4 2026
+                  </td>
+                  <td class="py-3 px-3 font-mono text-[10px] text-[#6b7280] whitespace-nowrap">
+                    6J LALU
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <span class="inline-block px-1.5 py-0.5 bg-[#e63946] text-white font-mono text-[9px] font-bold tracking-wider">
+                      BARU
+                    </span>
+                  </td>
+                </tr>
+
+                <!-- Baris 4: DIBALAS -->
+                <tr class="hover:bg-[#f3f4f6] transition-colors">
+                  <td class="py-3 px-4">
+                    <div class="font-semibold text-[#6b7280]">Reza Firmansyah</div>
+                    <div class="font-mono text-[10px] text-[#9ca3af]">reza@finflow.co</div>
+                  </td>
+                  <td class="py-3 px-4 text-[#6b7280]">
+                    Re: Audit Performa Frontend Lighthouse
+                  </td>
+                  <td class="py-3 px-3 font-mono text-[10px] text-[#9ca3af] whitespace-nowrap">
+                    KEMARIN
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <span class="inline-block px-1.5 py-0.5 bg-[#e5e7eb] text-[#4b5563] font-mono text-[9px] font-semibold tracking-wider">
+                      DIBALAS
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right: Daftar Proyek (5 cols) -->
+        <div class="lg:col-span-5 bg-[#f9fafb] hairline-all">
+          <!-- Panel Header -->
+          <div class="p-5 hairline-b flex items-center justify-between bg-[#f9fafb]">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-[#111827]"></span>
+              <h3 class="font-mono text-xs font-bold text-[#111827] tracking-wider uppercase">PROYEK</h3>
+            </div>
+            <span class="font-mono text-[10px] text-[#9ca3af]">05 PUBLIKASI · 01 DRAF</span>
+          </div>
+
+          <!-- 5 Project Rows -->
+          <div class="divide-y divide-[#e5e7eb]">
+            <!-- Proyek 1 -->
+            <div class="p-3.5 hover:bg-[#f3f4f6] transition-colors flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-[10px] text-[#9ca3af]">01</span>
+                  <span class="font-bold text-xs text-[#111827]">Nexus Analytics</span>
+                  <span class="px-1.5 py-0.2 bg-emerald-500/10 text-emerald-700 font-mono text-[9px] font-bold">
+                    TAYANG
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-[#6b7280] mt-1 pl-5">
+                  UPDATE: 12 OKT 2026 · NEXT.JS 15
+                </div>
+              </div>
+              <button class="px-2.5 py-1 bg-transparent hairline-all text-[#111827] hover:bg-[#111827] hover:text-white font-mono text-[10px] font-medium transition-colors">
+                EDIT
+              </button>
+            </div>
+
+            <!-- Proyek 2 -->
+            <div class="p-3.5 hover:bg-[#f3f4f6] transition-colors flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-[10px] text-[#9ca3af]">02</span>
+                  <span class="font-bold text-xs text-[#111827]">Lapak Storefront</span>
+                  <span class="px-1.5 py-0.2 bg-emerald-500/10 text-emerald-700 font-mono text-[9px] font-bold">
+                    TAYANG
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-[#6b7280] mt-1 pl-5">
+                  UPDATE: 08 OKT 2026 · STRIPE ENGINE
+                </div>
+              </div>
+              <button class="px-2.5 py-1 bg-transparent hairline-all text-[#111827] hover:bg-[#111827] hover:text-white font-mono text-[10px] font-medium transition-colors">
+                EDIT
+              </button>
+            </div>
+
+            <!-- Proyek 3 -->
+            <div class="p-3.5 hover:bg-[#f3f4f6] transition-colors flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-[10px] text-[#9ca3af]">03</span>
+                  <span class="font-bold text-xs text-[#111827]">Bookly Matrix</span>
+                  <span class="px-1.5 py-0.2 bg-emerald-500/10 text-emerald-700 font-mono text-[9px] font-bold">
+                    TAYANG
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-[#6b7280] mt-1 pl-5">
+                  UPDATE: 29 SEP 2026 · WEBSOCKETS
+                </div>
+              </div>
+              <button class="px-2.5 py-1 bg-transparent hairline-all text-[#111827] hover:bg-[#111827] hover:text-white font-mono text-[10px] font-medium transition-colors">
+                EDIT
+              </button>
+            </div>
+
+            <!-- Proyek 4 -->
+            <div class="p-3.5 hover:bg-[#f3f4f6] transition-colors flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-[10px] text-[#9ca3af]">04</span>
+                  <span class="font-bold text-xs text-[#111827]">AdminKit Core</span>
+                  <span class="px-1.5 py-0.2 bg-emerald-500/10 text-emerald-700 font-mono text-[9px] font-bold">
+                    TAYANG
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-[#6b7280] mt-1 pl-5">
+                  UPDATE: 15 SEP 2026 · PRISMA ORM
+                </div>
+              </div>
+              <button class="px-2.5 py-1 bg-transparent hairline-all text-[#111827] hover:bg-[#111827] hover:text-white font-mono text-[10px] font-medium transition-colors">
+                EDIT
+              </button>
+            </div>
+
+            <!-- Proyek 5 (Draf) -->
+            <div class="p-3.5 hover:bg-[#f3f4f6] transition-colors flex items-center justify-between">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono text-[10px] text-[#9ca3af]">05</span>
+                  <span class="font-bold text-xs text-[#111827]">Pulse Landing v3</span>
+                  <span class="px-1.5 py-0.2 bg-[#f3f4f6] text-[#6b7280] hairline-all font-mono text-[9px] font-bold">
+                    DRAF
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-[#6b7280] mt-1 pl-5">
+                  UPDATE: KEMARIN · ASTRO 5.0
+                </div>
+              </div>
+              <button class="px-2.5 py-1 bg-transparent hairline-all text-[#111827] hover:bg-[#111827] hover:text-white font-mono text-[10px] font-medium transition-colors">
+                EDIT
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM AUDIT STRIP -->
+      <footer class="pt-6 pb-2 hairline-t flex flex-col sm:flex-row items-center justify-between font-mono text-[10px] text-[#9ca3af] gap-2">
+        <div class="flex items-center gap-3">
+          <span>NOPAL.DEV // SISTEM MANAJEMEN PORTOFOLIO</span>
+          <span>·</span>
+          <span>TERENKRIPSI END-TO-END</span>
+        </div>
+        <div>
+          © 2026 NOPAL RISFANA · DIBUAT DENGAN PRESISI BRUTALIST-LITE
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
